@@ -9,7 +9,7 @@ function App()
 	function handleChange(evt) {
 		setInput(evt.target.value);
 	}
-	function addTask() {
+	function addNewTask() {
 		if(input.length > 0) {
 			const new_list=[...list];
 			new_list.push(input);
@@ -46,7 +46,7 @@ function App()
 	return (
 	<div id="main">
 		<input type="text" id="task" onChange={handleChange} value={input}></input>
-		<button id="btn" onClick={addTask}>Add</button>
+		<button id="btn" onClick={addNewTask}>Add</button>
 		<ul>{
 				list.map((item,ind) =>
 					{
