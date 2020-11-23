@@ -15,7 +15,7 @@ function App() {
 	function addNewTask() {
 		if (input.trim().length > 0) {
 			const new_list = [...list];
-			new_list.push(input);
+			new_list.push(input.trim());
 			console.log("new list", new_list);
 			setList(new_list);
 			const new_editMode = [...editMode, 0];
@@ -32,7 +32,7 @@ function App() {
 	function updateTask(index) {
 		if (editItem.trim().length > 0) {
 			const new_list = [...list];
-			new_list[index] = editItem;
+			new_list[index] = editItem.trim();
 			setList(new_list);
 		}
 		const new_editMode = [...editMode];
@@ -67,7 +67,7 @@ function App() {
 								(// setInput(item)
 									<li key={ind} className="list">
 										<input className="editTask" type="text" onChange={handleEdit}></input>
-										<button className="saveTask" onClick={() => updateTask(ind)}>Save</button>
+										<button className="saveTask" onClick={() => updateTask(ind)} disabled={editItem.trim().length === 0}>Save</button>
 									</li>)}
 						</div>);
 				}
