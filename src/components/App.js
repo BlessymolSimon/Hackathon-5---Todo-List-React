@@ -13,7 +13,7 @@ function App() {
 		setItem(evt.target.value);
 	}
 	function addNewTask() {
-		if (input.length > 0) {
+		if (input.trim().length > 0) {
 			const new_list = [...list];
 			new_list.push(input);
 			console.log("new list", new_list);
@@ -30,7 +30,7 @@ function App() {
 		setEditMode(new_editMode);
 	}
 	function updateTask(index) {
-		if (editItem.length > 0) {
+		if (editItem.trim().length > 0) {
 			const new_list = [...list];
 			new_list[index] = editItem;
 			setList(new_list);
@@ -51,7 +51,7 @@ function App() {
 	return (
 		<div id="main">
 			<input type="text" id="task" onChange={handleChange} value={input}></input>
-			<button id="btn" onClick={addNewTask}>Add</button>
+			<button id="btn" onClick={addNewTask} disabled={input.trim().length === 0}>Add</button>
 			<ul>{
 				list.map((item, ind) => {
 					// console.log("within list.map",editMode[ind]===0,item,ind);
