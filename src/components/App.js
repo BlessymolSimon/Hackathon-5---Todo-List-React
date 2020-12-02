@@ -60,13 +60,13 @@ function App() {
 					// console.log("within list.map",editMode[ind]===0,item,ind);
 					return (editMode[ind] === 0) ?  // not editable
 						(<li key={ind}>
-							<input type="text" className="list" value={item} disabled></input>
+							<p className="list">{item}</p>
 							<button className="edit" onClick={() => editor(ind)}>Edit</button>
 							<button className="delete" onClick={() => deletion(ind)}>Delete</button>
 						</li>)
 						:
 						(// setInput(item)
-							<li key={ind} className="list">
+							<li key={ind}>
 								<textarea className="editTask" onChange={handleEdit} value={editItem} />
 								<button className="saveTask" onClick={() => updateTask(ind)} disabled={editItem.trim().length === 0}>Save</button>
 							</li>)
