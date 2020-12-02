@@ -37,7 +37,7 @@ function App() {
 		const new_list = [...list];
 		new_list[index] = editItem.trim();
 		setList(new_list);
-		
+
 		const new_editMode = [...editMode];
 		new_editMode[index] = 0;
 		setEditMode(new_editMode);
@@ -59,8 +59,8 @@ function App() {
 				list.map((item, ind) => {
 					// console.log("within list.map",editMode[ind]===0,item,ind);
 					return (editMode[ind] === 0) ?  // not editable
-						(<li key={ind} className="list">
-							<input type="text" value={item} disabled></input>
+						(<li key={ind}>
+							<input type="text" className="list" value={item} disabled></input>
 							<button className="edit" onClick={() => editor(ind)}>Edit</button>
 							<button className="delete" onClick={() => deletion(ind)}>Delete</button>
 						</li>)
