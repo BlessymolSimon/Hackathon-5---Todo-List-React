@@ -50,28 +50,24 @@ function App() {
 	}
 	return (
 		<div id="main">
-			<input type="text" id="task" onChange={handleChange} value={input}></input>
+			<textarea id="task" onChange={handleChange} value={input}></textarea>
 			<button id="btn" onClick={addNewTask} disabled={input.trim().length === 0}>Add</button>
 			<ul>{
 				list.map((item, ind) => {
 					// console.log("within list.map",editMode[ind]===0,item,ind);
-					return (
-						<div> {
-							(editMode[ind] === 0) ?  // not editable
-								(<li key={ind} className="list">
-									<input type="text" value={item} disabled></input>
-									<button className="edit" onClick={() => editor(ind)}>Edit</button>
-									<button className="delete" onClick={() => deletion(ind)}>Delete</button>
-								</li>)
-								:
-								(// setInput(item)
-									<li key={ind} className="list">
-										<input className="editTask" type="text" onChange={handleEdit}></input>
-										<button className="saveTask" onClick={() => updateTask(ind)} disabled={editItem.trim().length === 0}>Save</button>
-									</li>)}
-						</div>);
-				}
-				)
+					return (editMode[ind] === 0) ?  // not editable
+						(<li key={ind} className="list">
+							<input type="text" value={item} disabled></input>
+							<button className="edit" onClick={() => editor(ind)}>Edit</button>
+							<button className="delete" onClick={() => deletion(ind)}>Delete</button>
+						</li>)
+						:
+						(// setInput(item)
+							<li key={ind} className="list">
+								<input className="editTask" type="text" onChange={handleEdit}></input>
+								<button className="saveTask" onClick={() => updateTask(ind)} disabled={editItem.trim().length === 0}>Save</button>
+							</li>)
+				})
 			}
 			</ul>
 		</div>
