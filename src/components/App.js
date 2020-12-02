@@ -28,6 +28,7 @@ function App() {
 		const new_editMode = [...editMode];
 		new_editMode[index] = 1;
 		setEditMode(new_editMode);
+		setItem(evt.target.value);
 	}
 	function updateTask(index) {
 		if (editItem.trim().length > 0) {
@@ -38,7 +39,7 @@ function App() {
 		const new_editMode = [...editMode];
 		new_editMode[index] = 0;
 		setEditMode(new_editMode);
-		setItem("");
+		// setItem("");
 	}
 	function deletion(index) {
 		// console.log(index);
@@ -64,7 +65,7 @@ function App() {
 						:
 						(// setInput(item)
 							<li key={ind} className="list">
-								<input className="editTask" type="text" onChange={handleEdit}></input>
+								<textarea className="editTask" type="text" onChange={handleEdit}/>
 								<button className="saveTask" onClick={() => updateTask(ind)} disabled={editItem.trim().length === 0}>Save</button>
 							</li>)
 				})
